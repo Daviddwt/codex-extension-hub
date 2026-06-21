@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Codex Extension Hub Tutorial</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Arial,sans-serif' font-size='24' font-weight='700' fill='white'%3ECE%3C/text%3E%3C/svg%3E" />
+    <style>
+      :root {
+        --ink: #15202b;
+        --muted: #5f6f83;
+        --paper: #fbfcfd;
+        --surface: #ffffff;
+        --line: #d9e1ea;
+        --teal: #0f766e;
+        --blue: #2458d3;
+        --amber: #9a5b08;
+        --soft: #eef5f4;
+        --code: #111827;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: -apple-system, "SF Pro Text", "PingFang SC", "Noto Sans SC", sans-serif;
+        line-height: 1.72;
+      }
+
+      a {
+        color: var(--teal);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+      }
+
+      .shell {
+        width: min(1160px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+        gap: 44px;
+        align-items: center;
+        min-height: 86vh;
+        padding: 48px 0 28px;
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--teal);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 760px;
+        margin-bottom: 18px;
+        font-size: clamp(42px, 6vw, 78px);
+        line-height: 1.02;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        max-width: 680px;
+        margin-bottom: 28px;
+        color: var(--muted);
+        font-size: 20px;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--teal);
+        border-radius: 8px;
+        padding: 0 16px;
+        background: var(--teal);
+        color: #ffffff;
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .button.secondary {
+        border-color: var(--line);
+        background: var(--surface);
+        color: var(--ink);
+      }
+
+      .screenshot {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+        box-shadow: 0 22px 60px rgba(21, 32, 43, 0.12);
+      }
+
+      .screenshot img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .section {
+        padding: 64px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: 0.7fr 1fr;
+        gap: 32px;
+        align-items: start;
+        margin-bottom: 28px;
+      }
+
+      .section h2 {
+        margin-bottom: 0;
+        font-size: clamp(30px, 4vw, 48px);
+        line-height: 1.08;
+      }
+
+      .section-head p {
+        color: var(--muted);
+        font-size: 18px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .tile,
+      .code-panel,
+      .quote {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+      }
+
+      .tile {
+        padding: 22px;
+      }
+
+      .tile strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 18px;
+      }
+
+      .tile p {
+        margin-bottom: 0;
+        color: var(--muted);
+      }
+
+      .code-panel {
+        display: grid;
+        gap: 14px;
+        padding: 18px;
+        background: #0f172a;
+        color: #e5e7eb;
+      }
+
+      .code-panel span {
+        color: #93c5fd;
+        font-weight: 800;
+      }
+
+      pre {
+        margin: 0;
+        overflow-x: auto;
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      code {
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      }
+
+      .flow {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .step {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--soft);
+      }
+
+      .step span {
+        display: inline-flex;
+        margin-bottom: 18px;
+        color: var(--teal);
+        font-weight: 900;
+      }
+
+      .step strong {
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      .step p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .quote {
+        padding: 28px;
+      }
+
+      .quote p {
+        margin-bottom: 18px;
+        font-size: 22px;
+        line-height: 1.55;
+      }
+
+      .quote footer {
+        color: var(--muted);
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .lang-block {
+        display: grid;
+        gap: 10px;
+        align-content: start;
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+      }
+
+      .lang-block h3 {
+        margin-bottom: 0;
+      }
+
+      .lang-block p {
+        margin-bottom: 0;
+        color: var(--muted);
+      }
+
+      .footer {
+        padding: 28px 0 48px;
+        color: var(--muted);
+        text-align: center;
+      }
+
+      @media (max-width: 900px) {
+        .hero,
+        .section-head,
+        .split {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          min-height: auto;
+        }
+
+        .grid,
+        .flow {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .shell {
+          width: min(100% - 28px, 1160px);
+        }
+
+        .grid,
+        .flow {
+          grid-template-columns: 1fr;
+        }
+
+        .lead {
+          font-size: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero" data-screen-label="hero">
+        <div>
+          <p class="eyebrow">Local-first Codex workspace</p>
+          <h1>把散落的 Codex 扩展，变成可管理资产。</h1>
+          <p class="lead">Codex Extension Hub 一键扫描本机 Plugin、Skill、MCP 和 App，用本地网页告诉你装了什么、怎么调用、哪里重复、哪个适合当前任务。</p>
+          <div class="actions">
+            <a class="button" href="https://github.com/Daviddwt/codex-extension-hub">查看 GitHub</a>
+            <a class="button secondary" href="../../docs/tutorial.zh-CN.md">阅读教程</a>
+          </div>
+        </div>
+        <figure class="screenshot">
+          <img src="assets/extension-hub-screenshot.png" alt="Codex Extension Hub dashboard screenshot" />
+        </figure>
+      </section>
+
+      <section class="section" data-screen-label="install">
+        <div class="section-head">
+          <h2>安装不应该成为门槛。</h2>
+          <p>教程面向第一次接触本项目的用户：复制一行命令，安装依赖，扫描本机扩展，然后打开本地网页。</p>
+        </div>
+        <div class="code-panel">
+          <span>One-command install</span>
+          <pre><code>curl -fsSL https://raw.githubusercontent.com/Daviddwt/codex-extension-hub/main/scripts/install.sh | bash
+
+cd ~/codex-extension-hub
+npm run dev</code></pre>
+        </div>
+      </section>
+
+      <section class="section" data-screen-label="features">
+        <div class="section-head">
+          <h2>推广时讲清楚四件事。</h2>
+          <p>这不是“又一个插件列表”，而是把本机扩展环境变成可以搜索、筛选、推荐和维护的工作台。</p>
+        </div>
+        <div class="grid">
+          <article class="tile">
+            <strong>看清现状</strong>
+            <p>按 Plugin、Skill、MCP、项目级、全局和异常状态快速理解本机扩展结构。</p>
+          </article>
+          <article class="tile">
+            <strong>按任务推荐</strong>
+            <p>输入要做的事，本地推荐器根据名称、用途、分类和提示词给出候选扩展。</p>
+          </article>
+          <article class="tile">
+            <strong>发现异常</strong>
+            <p>同名扩展、元数据缺失、marketplace 不一致都会被标记出来，方便清理。</p>
+          </article>
+          <article class="tile">
+            <strong>检查更新</strong>
+            <p>第三方 marketplace 插件可检查更新，自建和系统托管插件按策略跳过。</p>
+          </article>
+          <article class="tile">
+            <strong>真实边界</strong>
+            <p>只读扫描元数据，不执行插件脚本，不启动 MCP，不上传本地数据。</p>
+          </article>
+          <article class="tile">
+            <strong>团队可复用</strong>
+            <p>适合沉淀团队常用 skill/plugin 命名、用途说明和调用入口。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" data-screen-label="workflow">
+        <div class="section-head">
+          <h2>用户路径要短。</h2>
+          <p>文章和 README 都围绕这条路径组织：装上、打开、搜索、筛异常、做更新。</p>
+        </div>
+        <div class="flow">
+          <article class="step">
+            <span>01</span>
+            <strong>Install</strong>
+            <p>一键安装脚本克隆仓库、安装依赖并生成本机扫描结果。</p>
+          </article>
+          <article class="step">
+            <span>02</span>
+            <strong>Open</strong>
+            <p>本地打开 127.0.0.1，只在自己的电脑上查看扩展数据。</p>
+          </article>
+          <article class="step">
+            <span>03</span>
+            <strong>Search</strong>
+            <p>按名称、用途、调用名、项目路径或 marketplace 搜索。</p>
+          </article>
+          <article class="step">
+            <span>04</span>
+            <strong>Maintain</strong>
+            <p>检查异常项和第三方更新，把扩展环境整理干净。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" data-screen-label="copy">
+        <div class="section-head">
+          <h2>发布文案已经备好。</h2>
+          <p>适合 X、公众号、论坛和团队内部分享。重点是“本地运行、看得懂、可维护”。</p>
+        </div>
+        <div class="quote">
+          <p>我做了一个本地版 Codex 扩展中心：一键扫描你电脑上的 Plugin、Skill、MCP 和 App，告诉你装了什么、怎么调用、哪个重复、哪个该更新，还能按任务推荐应该用哪个扩展。全程本地运行，不执行插件脚本，不上传数据。</p>
+          <footer>可直接用于 X / 公众号摘要 / 论坛开头</footer>
+        </div>
+      </section>
+
+      <section class="section" data-screen-label="docs">
+        <div class="section-head">
+          <h2>GitHub 同时照顾中英文读者。</h2>
+          <p>README、教程和传播素材都提供中英文版本，降低转发和二次传播成本。</p>
+        </div>
+        <div class="split">
+          <article class="lang-block" lang="zh-CN">
+            <h3>中文入口</h3>
+            <p>README.zh-CN.md、tutorial.zh-CN.md、social-posts.zh-CN.md。</p>
+          </article>
+          <article class="lang-block" lang="en">
+            <h3>English entry</h3>
+            <p>README.md, tutorial.en.md, and social-posts.en.md for GitHub and community sharing.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">Codex Extension Hub · Local metadata, visible capabilities, honest boundaries.</footer>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+node_modules/
+dist/
+.DS_Store
+.playwright-mcp/
+.agents/
+
+# Local scan output contains machine-specific paths and extension metadata.
+data/*.json
+!data/.gitkeep
+catalog.overrides.json
+
+# Local experiments and generated artifacts.
+designs/baoyu-design-test/
+hatch-pet-runs/
+voice_outputs/
+pet-packages/
+*.png
+*.mp4
+*.pptx
+!designs/codex-extension-hub-tutorial/assets/*.png
+
+# Private project methodology notes from the author's workspace.
+AGENTS.md
+docs/*
+!docs/tutorial.zh-CN.md
+!docs/tutorial.en.md
+!docs/social-posts.zh-CN.md
+!docs/social-posts.en.md
+project-kits/
+templates/
+skills-lock.json
+
+# Environment files.
+.env
+.env.*
+!.env.example

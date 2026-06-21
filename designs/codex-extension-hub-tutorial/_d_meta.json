@@ -1,0 +1,18 @@
+{
+  "type": "design",
+  "designSystems": [],
+  "primaryDesignSystem": null,
+  "assets": {
+    "Codex Extension Hub Tutorial": {
+      "versions": [
+        {
+          "path": "Codex Extension Hub Tutorial.html",
+          "createdAt": "2026-06-21T11:04:01.152Z",
+          "status": "needs-review"
+        }
+      ]
+    }
+  },
+  "createdAt": "2026-06-21T11:04:01.153Z",
+  "updatedAt": "2026-06-21T11:04:01.153Z"
+}
