@@ -53,19 +53,6 @@ local extension data.
 
 If you prefer manual commands, the GitHub README keeps a transparent step-by-step path. This tutorial does not rely on a remote one-line installer.
 
-For future plugin tutorials, use the same natural-language pattern:
-
-```text
-Install this Codex plugin from the following URL:
-https://github.com/Daviddwt/solution-factory
-
-Please read the notes first, download the latest shared package, install the plugin,
-open the web workbench, and verify that it works.
-
-Do not execute unknown scripts. If permissions, login state, or local paths are
-required, explain that first before continuing.
-```
-
 ## What You See First
 
 The first screen is a local extension dashboard.

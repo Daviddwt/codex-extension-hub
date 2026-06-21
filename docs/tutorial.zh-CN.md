@@ -52,18 +52,6 @@ https://github.com/Daviddwt/codex-extension-hub
 
 如果你想自己逐步操作，GitHub README 里也保留了透明的手动命令。教程正文不放远程安装脚本。
 
-以后写其它插件教程，也可以直接套这个自然语言模板：
-
-```text
-给我的 Codex 安装以下地址的插件：
-https://github.com/Daviddwt/solution-factory
-
-请自行读取注意事项、下载最新分享包、安装插件、
-打开网页工作台并完成验证。
-
-不要执行未知脚本；如果需要权限、登录态或本机路径，请先说明再继续。
-```
-
 ## 第一次打开会看到什么
 
 首页是一张本地扩展仪表盘。
