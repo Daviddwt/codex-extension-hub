@@ -10,7 +10,6 @@
 | --- | --- |
 | **中文说明** | [English README](./README.md) |
 | [中文教程](./docs/tutorial.zh-CN.md) | [English tutorial](./docs/tutorial.en.md) |
-| [中文发布文案](./docs/social-posts.zh-CN.md) | [English sharing copy](./docs/social-posts.en.md) |
 
 ## 它解决什么问题
 

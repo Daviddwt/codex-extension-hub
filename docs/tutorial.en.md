@@ -120,15 +120,3 @@ Codex Extension Hub is useful if:
 - you often work on tutorials, proposals, decks, audits, or code tasks and want to pick the right extension faster.
 
 If you only use one or two extensions, you may not need it yet. Once the list grows, a local dashboard saves a lot of context switching.
-
-## Short Version for Sharing
-
-I built a local dashboard for Codex extensions.
-
-It reads metadata from your installed Plugins, Skills, MCP servers, Apps, and Hooks, then shows what is installed, how to invoke it, where it came from, which items have duplicate or incomplete metadata, and which extension may fit a task.
-
-It runs locally, does not execute extension scripts, and does not upload data. Instead of pasting a remote installer, give the GitHub URL and safety requirements to your local agent, then let the agent read, install, start, and verify it.
-
-```text
-https://github.com/Daviddwt/codex-extension-hub
-```

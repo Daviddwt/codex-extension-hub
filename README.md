@@ -10,7 +10,6 @@ It scans local metadata for Plugins, Skills, MCP servers, Apps/Connectors, and H
 | --- | --- |
 | **README** | [中文说明](./README.zh-CN.md) |
 | [English tutorial](./docs/tutorial.en.md) | [中文教程](./docs/tutorial.zh-CN.md) |
-| [English sharing copy](./docs/social-posts.en.md) | [中文发布文案](./docs/social-posts.zh-CN.md) |
 
 ## Why This Exists
 
