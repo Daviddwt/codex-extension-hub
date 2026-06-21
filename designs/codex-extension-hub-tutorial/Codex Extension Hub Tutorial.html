@@ -328,15 +328,19 @@
 
       <section class="section" data-screen-label="install">
         <div class="section-head">
-          <h2>安装不应该成为门槛。</h2>
-          <p>教程面向第一次接触本项目的用户：复制一行命令，安装依赖，扫描本机扩展，然后打开本地网页。</p>
+          <h2>安装入口应该是目标描述。</h2>
+          <p>教程面向 agent-first 用户：不是复制一键脚本，而是把仓库地址、安装目标和安全边界说清楚，让本地 agent 完成安装和验证。</p>
         </div>
         <div class="code-panel">
-          <span>One-command install</span>
-          <pre><code>curl -fsSL https://raw.githubusercontent.com/Daviddwt/codex-extension-hub/main/scripts/install.sh | bash
+          <span>Agent install prompt</span>
+          <pre><code>请给我的 Codex 安装以下本地工具：
+https://github.com/Daviddwt/codex-extension-hub
 
-cd ~/codex-extension-hub
-npm run dev</code></pre>
+请先自行读取 README 和安全注意事项，下载或克隆最新版本，安装依赖，
+运行本地扫描，启动网页工作台，打开浏览器并完成页面可用性验证。
+
+不要执行扫描到的 Plugin、Skill、Hook 或 MCP 脚本。
+不要上传本机扩展数据。</code></pre>
         </div>
       </section>
 
@@ -376,13 +380,13 @@ npm run dev</code></pre>
       <section class="section" data-screen-label="workflow">
         <div class="section-head">
           <h2>用户路径要短。</h2>
-          <p>文章和 README 都围绕这条路径组织：装上、打开、搜索、筛异常、做更新。</p>
+          <p>文章和 README 都围绕这条路径组织：告诉 agent 目标、打开工作台、搜索、筛异常、做更新。</p>
         </div>
         <div class="flow">
           <article class="step">
             <span>01</span>
-            <strong>Install</strong>
-            <p>一键安装脚本克隆仓库、安装依赖并生成本机扫描结果。</p>
+            <strong>Describe</strong>
+            <p>用自然语言告诉 agent 仓库地址、安装目标和安全边界。</p>
           </article>
           <article class="step">
             <span>02</span>

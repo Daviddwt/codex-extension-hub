@@ -13,28 +13,25 @@ Once you start collecting Codex plugins, local skills, MCP servers, and project-
 - Teams that want a visible extension catalog.
 - Users who want to find duplicate installs, incomplete metadata, and third-party update status.
 
-## One-Command Install
+## Recommended Install: Ask Your Agent
 
-Make sure you have Node.js 20+ and npm, then run:
+For agent-first workflows, avoid copy-pasting one-line shell installers. Give your local agent a clear goal, the repository URL, and the safety boundaries.
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/Daviddwt/codex-extension-hub/main/scripts/install.sh | bash
-```
-
-Start the app:
-
-```bash
-cd ~/codex-extension-hub
-npm run dev
-```
-
-Open:
+Example prompt:
 
 ```text
-http://127.0.0.1:5173
+Install this local Codex tool for me:
+https://github.com/Daviddwt/codex-extension-hub
+
+Please read the README and safety notes first, clone or download the latest version,
+install dependencies, run the local scan, start the web dashboard, open it in the
+browser, and verify that the page loads.
+
+Do not execute any discovered Plugin, Skill, Hook, or MCP scripts. Do not upload
+local extension data.
 ```
 
-Manual install:
+Transparent manual path:
 
 ```bash
 git clone https://github.com/Daviddwt/codex-extension-hub.git
@@ -42,6 +39,12 @@ cd codex-extension-hub
 npm install
 npm run scan
 npm run dev
+```
+
+Open:
+
+```text
+http://127.0.0.1:5173
 ```
 
 ## What You Get
@@ -114,7 +117,7 @@ Codex Extension Hub is intentionally conservative:
 
 ## Suggested Workflow
 
-1. Install and run the hub.
+1. Ask your local agent to install and verify the hub.
 2. Use the metric cards to understand your local extension structure.
 3. Search for common tasks and copy invocation names.
 4. Filter abnormal items and clean up duplicate installs.

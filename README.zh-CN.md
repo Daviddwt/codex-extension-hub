@@ -19,28 +19,22 @@
 
 Codex 扩展中心把这些信息收拢到一个本地页面里。
 
-## 一键安装
+## 推荐安装方式：告诉 agent 你的目标
 
-> 从互联网执行脚本前，建议先打开脚本看一眼。
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/Daviddwt/codex-extension-hub/main/scripts/install.sh | bash
-```
-
-启动：
-
-```bash
-cd ~/codex-extension-hub
-npm run dev
-```
-
-打开：
+今后推荐用自然语言让本地 agent 读取仓库、安装、启动和验证，而不是复制远程 shell 命令直接执行。
 
 ```text
-http://127.0.0.1:5173
+请给我的 Codex 安装以下本地工具：
+https://github.com/Daviddwt/codex-extension-hub
+
+请先自行读取 README 和安全注意事项，下载或克隆最新版本，安装依赖，
+运行本地扫描，启动网页工作台，打开浏览器并完成页面可用性验证。
+
+不要执行扫描到的 Plugin、Skill、Hook 或 MCP 脚本。
+不要上传本机扩展数据。
 ```
 
-## 手动安装
+透明的手动路径：
 
 ```bash
 git clone https://github.com/Daviddwt/codex-extension-hub.git
@@ -48,6 +42,12 @@ cd codex-extension-hub
 npm install
 npm run scan
 npm run dev
+```
+
+打开：
+
+```text
+http://127.0.0.1:5173
 ```
 
 ## 环境要求

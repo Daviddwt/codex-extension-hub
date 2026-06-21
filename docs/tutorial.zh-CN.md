@@ -11,28 +11,24 @@
 - 想给团队整理一套“可发现、可调用、可维护”的扩展目录；
 - 想检查重复安装、元数据缺失、第三方插件更新状态的人。
 
-## 一键安装
+## 推荐安装方式：把目标说给 agent
 
-先确认本机有 Node.js 20+ 和 npm，然后运行：
+不要把教程设计成“复制远程 shell 命令直接执行”。更适合 agent 时代的安装方式，是把目标、仓库地址和安全边界讲清楚，让本地 agent 自己读取说明、执行安装并完成验证。
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/Daviddwt/codex-extension-hub/main/scripts/install.sh | bash
-```
-
-启动：
-
-```bash
-cd ~/codex-extension-hub
-npm run dev
-```
-
-打开浏览器：
+你可以这样对 agent 说：
 
 ```text
-http://127.0.0.1:5173
+请给我的 Codex 安装以下本地工具：
+https://github.com/Daviddwt/codex-extension-hub
+
+请先自行读取 README 和安全注意事项，下载或克隆最新版本，安装依赖，
+运行本地扫描，启动网页工作台，打开浏览器并完成页面可用性验证。
+
+不要执行扫描到的 Plugin、Skill、Hook 或 MCP 脚本。
+不要上传本机扩展数据。
 ```
 
-如果你更喜欢手动安装：
+如果你想自己手动操作，可以按这个透明路径执行：
 
 ```bash
 git clone https://github.com/Daviddwt/codex-extension-hub.git
@@ -40,6 +36,12 @@ cd codex-extension-hub
 npm install
 npm run scan
 npm run dev
+```
+
+打开浏览器：
+
+```text
+http://127.0.0.1:5173
 ```
 
 ## 第一次打开会看到什么
@@ -114,7 +116,7 @@ Codex 扩展中心只读扫描元数据：
 
 ## 推荐工作流
 
-1. 安装并运行扩展中心。
+1. 用自然语言让 agent 安装并验证扩展中心。
 2. 点击统计卡片，了解本机扩展结构。
 3. 搜索常用任务，确认应该调用哪个扩展。
 4. 点“异常”清理重复安装或元数据缺失。

@@ -15,10 +15,13 @@
 
 全程本地运行，不执行插件脚本，不上传数据。
 
-一键安装：
+推荐安装方式：把目标说给 agent：
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/Daviddwt/codex-extension-hub/main/scripts/install.sh | bash
+```text
+请给我的 Codex 安装以下本地工具：
+https://github.com/Daviddwt/codex-extension-hub
+
+请自行读取注意事项、下载最新版本、安装依赖、打开网页工作台并完成验证。
 ```
 
 GitHub：

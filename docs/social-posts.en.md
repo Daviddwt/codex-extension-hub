@@ -15,10 +15,14 @@ Codex Extension Hub scans your local Plugins, Skills, MCP servers, Apps, and Hoo
 
 It runs locally, does not execute extension scripts, and does not upload your data.
 
-Install:
+Recommended install prompt:
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/Daviddwt/codex-extension-hub/main/scripts/install.sh | bash
+```text
+Install this local Codex tool for me:
+https://github.com/Daviddwt/codex-extension-hub
+
+Please read the safety notes, download the latest version, install dependencies,
+open the web dashboard, and verify that it works.
 ```
 
 GitHub:

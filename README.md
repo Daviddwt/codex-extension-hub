@@ -16,28 +16,23 @@ Codex extensions quickly become hard to manage once you install curated plugins,
 - Find duplicate or incomplete metadata before it causes confusion.
 - Track third-party plugin update checks without touching self-built plugins.
 
-## One-Command Install
+## Agent Install Prompt
 
-> Read the script before piping it into your shell if you are installing from the internet.
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/Daviddwt/codex-extension-hub/main/scripts/install.sh | bash
-```
-
-Then start the app:
-
-```bash
-cd ~/codex-extension-hub
-npm run dev
-```
-
-Open:
+For agent-first workflows, do not paste shell installers. Ask your local agent to read the repository, install it, and verify the result.
 
 ```text
-http://127.0.0.1:5173
+Install this local Codex tool for me:
+https://github.com/Daviddwt/codex-extension-hub
+
+Please read the README and safety notes first, clone or download the latest version,
+install dependencies, run the local scan, start the web dashboard, open it in the
+browser, and verify that the page loads.
+
+Do not execute any discovered Plugin, Skill, Hook, or MCP scripts. Do not upload
+local extension data.
 ```
 
-## Manual Install
+Transparent manual path:
 
 ```bash
 git clone https://github.com/Daviddwt/codex-extension-hub.git
@@ -45,6 +40,12 @@ cd codex-extension-hub
 npm install
 npm run scan
 npm run dev
+```
+
+Open:
+
+```text
+http://127.0.0.1:5173
 ```
 
 ## Requirements
