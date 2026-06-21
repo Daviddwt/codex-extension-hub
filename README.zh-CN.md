@@ -4,7 +4,13 @@
 
 它会只读扫描本机可发现的 Plugin、Skill、MCP Server、App/Connector 和 Hook 元数据，并展示来源、安装范围、调用方式、中文用途说明、启用状态、异常提示、更新记录和本地任务推荐。
 
-[English README](./README.md) · [中文教程](./docs/tutorial.zh-CN.md) · [English tutorial](./docs/tutorial.en.md)
+## 语言切换
+
+| 中文 | English |
+| --- | --- |
+| **中文说明** | [English README](./README.md) |
+| [中文教程](./docs/tutorial.zh-CN.md) | [English tutorial](./docs/tutorial.en.md) |
+| [中文发布文案](./docs/social-posts.zh-CN.md) | [English sharing copy](./docs/social-posts.en.md) |
 
 ## 它解决什么问题
 
@@ -19,9 +25,19 @@
 
 Codex 扩展中心把这些信息收拢到一个本地页面里。
 
+## 软件功能
+
+- **本地扩展目录**：只读扫描本机可发现的 Plugin、Skill、MCP Server、App/Connector 和 Hook 元数据。
+- **搜索和筛选**：按扩展类型、功能分类、安装范围、所属项目、Marketplace 来源、启用状态和收藏状态浏览。
+- **任务推荐**：输入“我要做什么”，根据本地元数据推荐可能适合的插件或 skill。
+- **异常提醒**：标出同名重复、缺少 `SKILL.md`、元数据不完整、marketplace 记录不一致等配置问题。
+- **第三方更新记录**：只检查符合策略的第三方 marketplace 插件，自建插件和系统托管插件会跳过。
+- **自建扩展发现**：你新建的本地 plugin 或 skill 在扫描后可以出现在扩展中心里，便于复用和整理。
+- **安全工作台**：展示路径、调用名、提示词、用途说明和告警，但不执行扩展脚本。
+
 ## 推荐安装方式：告诉 agent 你的目标
 
-今后推荐用自然语言让本地 agent 读取仓库、安装、启动和验证，而不是复制远程 shell 命令直接执行。
+今后推荐用自然语言让本地 agent 读取仓库、安装、启动和验证，而不是复制远程一行安装脚本直接执行。
 
 ```text
 请给我的 Codex 安装以下本地工具：
@@ -34,7 +50,7 @@ https://github.com/Daviddwt/codex-extension-hub
 不要上传本机扩展数据。
 ```
 
-透明的手动路径：
+如果你想自己逐步执行，可以走这条透明的手动路径：
 
 ```bash
 git clone https://github.com/Daviddwt/codex-extension-hub.git

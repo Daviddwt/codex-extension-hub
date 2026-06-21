@@ -4,7 +4,13 @@
 
 It scans local metadata for Plugins, Skills, MCP servers, Apps/Connectors, and Hooks, then turns that scattered information into a searchable interface with install scope, invocation names, source paths, warnings, update records, and local task-based recommendations.
 
-[中文说明](./README.zh-CN.md) · [中文教程](./docs/tutorial.zh-CN.md) · [English tutorial](./docs/tutorial.en.md)
+## Language
+
+| English | 中文 |
+| --- | --- |
+| **README** | [中文说明](./README.zh-CN.md) |
+| [English tutorial](./docs/tutorial.en.md) | [中文教程](./docs/tutorial.zh-CN.md) |
+| [English sharing copy](./docs/social-posts.en.md) | [中文发布文案](./docs/social-posts.zh-CN.md) |
 
 ## Why This Exists
 
@@ -16,9 +22,19 @@ Codex extensions quickly become hard to manage once you install curated plugins,
 - Find duplicate or incomplete metadata before it causes confusion.
 - Track third-party plugin update checks without touching self-built plugins.
 
+## What The Software Does
+
+- **Local extension catalog**: reads discoverable Plugin, Skill, MCP, App/Connector, and Hook metadata from local Codex/agent folders.
+- **Search and filters**: lets you browse by type, category, install scope, project, marketplace source, status, and favorites.
+- **Task-based recommendations**: accepts a plain-language task and suggests likely extensions from local metadata.
+- **Abnormal item review**: highlights duplicate names, missing skill files, and incomplete plugin/marketplace metadata.
+- **Third-party update records**: checks eligible third-party marketplace plugins while skipping self-built/local extensions.
+- **Self-built extension discovery**: after a scan, locally created plugins or skills can appear in the hub with their metadata and invocation names.
+- **Safety-first local dashboard**: shows paths, invocation names, usage prompts, and warnings without executing extension scripts.
+
 ## Agent Install Prompt
 
-For agent-first workflows, do not paste shell installers. Ask your local agent to read the repository, install it, and verify the result.
+For agent-first workflows, do not paste remote one-line installers. Ask your local agent to read the repository, install it, and verify the result.
 
 ```text
 Install this local Codex tool for me:
@@ -32,7 +48,7 @@ Do not execute any discovered Plugin, Skill, Hook, or MCP scripts. Do not upload
 local extension data.
 ```
 
-Transparent manual path:
+Transparent manual path, if you prefer to run each step yourself:
 
 ```bash
 git clone https://github.com/Daviddwt/codex-extension-hub.git

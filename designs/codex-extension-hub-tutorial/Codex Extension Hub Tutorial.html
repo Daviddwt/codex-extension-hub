@@ -315,7 +315,7 @@
         <div>
           <p class="eyebrow">Local-first Codex workspace</p>
           <h1>把散落的 Codex 扩展，变成可管理资产。</h1>
-          <p class="lead">Codex Extension Hub 一键扫描本机 Plugin、Skill、MCP 和 App，用本地网页告诉你装了什么、怎么调用、哪里重复、哪个适合当前任务。</p>
+          <p class="lead">Codex Extension Hub 会读取本机已有的 Plugin、Skill、MCP 和 App 元数据，用一个本地网页告诉你装了什么、怎么调用、哪里重复、哪个更适合当前任务。</p>
           <div class="actions">
             <a class="button" href="https://github.com/Daviddwt/codex-extension-hub">查看 GitHub</a>
             <a class="button secondary" href="../../docs/tutorial.zh-CN.md">阅读教程</a>
@@ -328,8 +328,8 @@
 
       <section class="section" data-screen-label="install">
         <div class="section-head">
-          <h2>安装入口应该是目标描述。</h2>
-          <p>教程面向 agent-first 用户：不是复制一键脚本，而是把仓库地址、安装目标和安全边界说清楚，让本地 agent 完成安装和验证。</p>
+          <h2>安装时，把目标说给 agent。</h2>
+          <p>公开教程不放远程一行安装脚本。把仓库地址、安装目标和安全边界说明白，让本地 agent 自己读 README、装依赖、打开工作台并验证页面。</p>
         </div>
         <div class="code-panel">
           <span>Agent install prompt</span>
@@ -346,8 +346,8 @@ https://github.com/Daviddwt/codex-extension-hub
 
       <section class="section" data-screen-label="features">
         <div class="section-head">
-          <h2>推广时讲清楚四件事。</h2>
-          <p>这不是“又一个插件列表”，而是把本机扩展环境变成可以搜索、筛选、推荐和维护的工作台。</p>
+          <h2>它解决的是日常小麻烦。</h2>
+          <p>插件和 skill 装多以后，真正费时间的是想不起来装了什么、该调用哪个、哪些重复了。这个工作台把这些信息放到一个地方。</p>
         </div>
         <div class="grid">
           <article class="tile">
@@ -379,8 +379,8 @@ https://github.com/Daviddwt/codex-extension-hub
 
       <section class="section" data-screen-label="workflow">
         <div class="section-head">
-          <h2>用户路径要短。</h2>
-          <p>文章和 README 都围绕这条路径组织：告诉 agent 目标、打开工作台、搜索、筛异常、做更新。</p>
+          <h2>用起来只要几步。</h2>
+          <p>告诉 agent 目标，打开本地页面，按任务搜索，点异常卡片清理配置提醒，再按策略检查第三方插件更新。</p>
         </div>
         <div class="flow">
           <article class="step">
@@ -408,12 +408,29 @@ https://github.com/Daviddwt/codex-extension-hub
 
       <section class="section" data-screen-label="copy">
         <div class="section-head">
-          <h2>发布文案已经备好。</h2>
-          <p>适合 X、公众号、论坛和团队内部分享。重点是“本地运行、看得懂、可维护”。</p>
+          <h2>可以直接拿去发。</h2>
+          <p>适合 X、公众号、论坛和团队内部分享。重点说清楚：本地运行、看得懂、能维护、不执行插件脚本。</p>
         </div>
         <div class="quote">
-          <p>我做了一个本地版 Codex 扩展中心：一键扫描你电脑上的 Plugin、Skill、MCP 和 App，告诉你装了什么、怎么调用、哪个重复、哪个该更新，还能按任务推荐应该用哪个扩展。全程本地运行，不执行插件脚本，不上传数据。</p>
+          <p>我做了一个本地版 Codex 扩展中心。它会读取你电脑上已有的 Plugin、Skill、MCP、App 和 Hook 元数据，整理成一个网页工作台：能看见装了什么、怎么调用、哪里重复，也能按任务推荐可能合适的扩展。全程本地运行，不执行插件脚本，不上传数据。</p>
           <footer>可直接用于 X / 公众号摘要 / 论坛开头</footer>
+        </div>
+      </section>
+
+      <section class="section" data-screen-label="agent-template">
+        <div class="section-head">
+          <h2>以后类似教程，都用这类说法。</h2>
+          <p>不让读者复制远程脚本。直接给 agent 一个自然语言任务，让它读取注意事项、下载最新版本、安装、打开工作台并验证。</p>
+        </div>
+        <div class="code-panel">
+          <span>Reusable agent prompt</span>
+          <pre><code>给我的 Codex 安装以下地址的插件：
+https://github.com/Daviddwt/solution-factory
+
+请自行读取注意事项、下载最新分享包、安装插件、
+打开网页工作台并完成验证。
+
+不要执行未知脚本；如果需要权限、登录态或本机路径，请先说明再继续。</code></pre>
         </div>
       </section>
 

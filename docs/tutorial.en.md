@@ -1,23 +1,43 @@
-# Codex Extension Hub: A Local Dashboard for Your Codex Plugins and Skills
+# I Built a Local Extension Hub for Codex
 
-Once you start collecting Codex plugins, local skills, MCP servers, and project-level tools, a simple question becomes surprisingly hard to answer:
+After you use Codex for a while, plugins, skills, MCP servers, and local tools start to pile up. At some point, the hard part is no longer installing one more tool. The hard part is remembering what you already have:
 
-> What do I actually have installed, and which extension should I use for this task?
+- What is the exact invocation name?
+- Did I install multiple versions of the same skill?
+- Which extension should I use for this task?
+- Is this project-level or global?
+- Have third-party plugins been checked for updates?
+- Can my own local plugins and skills show up in one place?
 
-**Codex Extension Hub** is a local web app that turns scattered extension metadata into a searchable, auditable dashboard. It does not execute extension scripts and does not upload your local data.
+That is why I built **Codex Extension Hub**.
 
-## Who It Is For
+It is a local web app for your own Codex extension environment. It reads local extension metadata and turns it into a dashboard you can search, filter, audit, and use for task-based recommendations.
 
-- Codex users with multiple Plugins, Skills, MCP servers, or Apps/Connectors.
-- People who reuse agent capabilities across projects.
-- Teams that want a visible extension catalog.
-- Users who want to find duplicate installs, incomplete metadata, and third-party update status.
+Project:
 
-## Recommended Install: Ask Your Agent
+```text
+https://github.com/Daviddwt/codex-extension-hub
+```
 
-For agent-first workflows, avoid copy-pasting one-line shell installers. Give your local agent a clear goal, the repository URL, and the safety boundaries.
+## What It Does
 
-Example prompt:
+The hub helps you see:
+
+- discovered Plugins, Skills, MCP servers, Apps/Connectors, and Hooks;
+- where each extension is installed: global, project-level, marketplace, or local;
+- invocation names, usage notes, paths, status, and prompt hints;
+- configuration warnings such as duplicate names, missing skill files, or incomplete marketplace metadata;
+- third-party marketplace plugin update records;
+- newly created local plugins or skills after you rerun the scanner;
+- task-based extension suggestions from local metadata.
+
+The boundary is intentionally conservative: it does not execute extension scripts, does not start MCP servers, and does not upload local extension data. The recommendation box is currently a local metadata scorer, not an external LLM.
+
+## Recommended Install: Tell Your Agent the Goal
+
+For public tutorials, I do not recommend asking people to paste a remote one-line install script. A better agent-first pattern is to tell your local agent the goal, the repository URL, and the safety boundaries, then let the agent read the README, install dependencies, start the dashboard, and verify the page.
+
+Use a prompt like this:
 
 ```text
 Install this local Codex tool for me:
@@ -31,100 +51,70 @@ Do not execute any discovered Plugin, Skill, Hook, or MCP scripts. Do not upload
 local extension data.
 ```
 
-Transparent manual path:
+If you prefer manual commands, the GitHub README keeps a transparent step-by-step path. This tutorial does not rely on a remote one-line installer.
 
-```bash
-git clone https://github.com/Daviddwt/codex-extension-hub.git
-cd codex-extension-hub
-npm install
-npm run scan
-npm run dev
-```
+## What You See First
 
-Open:
+The first screen is a local extension dashboard.
+
+The metric cards show total extensions, Plugins, Skills, MCP servers, project-level items, global items, disabled items, and abnormal items. Clicking a metric card filters the list below.
+
+For example, clicking **Abnormal** shows extensions with configuration warnings. “Abnormal” does not mean the extension failed to run. It means the scanner found something worth reviewing, such as duplicate names, missing `SKILL.md`, incomplete metadata, or a mismatch between marketplace records and the local cache.
+
+The browse area gives you search, filters, card view, table view, project grouping, category grouping, and plugin-source grouping.
+
+## Find Extensions by Task
+
+The recommender is the fastest way to narrow things down.
+
+Try a task like:
 
 ```text
-http://127.0.0.1:5173
+I need to create a polished tutorial for WeChat, X, and community forums, with text and visual assets.
 ```
 
-## What You Get
+The hub scores local metadata such as extension names, descriptions, categories, and prompt hints, then suggests likely Plugins or Skills.
 
-The dashboard shows:
+Your task text is not uploaded. The recommendation happens locally against scanned metadata.
 
-- total extension count;
-- Plugins, Skills, MCP servers, Apps/Connectors, and Hooks;
-- global vs project-level installation scope;
-- abnormal configuration warnings;
-- recent third-party plugin update checks;
-- a local task-based recommender.
+## Clean Up Duplicates and Warnings
 
-Clicking a metric card filters the extension list below it. For example, clicking **Abnormal** shows only extensions with configuration warnings.
+If you install, copy, or build skills often, duplicate names and incomplete metadata are easy to miss.
 
-## What “Abnormal” Means
+Common warnings include:
 
-Abnormal does not mean “the extension failed to run.” It means the scanner found a configuration warning, such as:
-
-- duplicate extension names across multiple install locations;
-- missing `SKILL.md`;
-- incomplete metadata;
+- the same extension name in multiple locations;
+- a missing `SKILL.md`;
+- incomplete plugin metadata;
 - marketplace records that do not match the local cache.
 
-This is meant to help you clean up your extension environment and understand invocation priority.
-
-## Task-Based Recommendations
-
-Type a task like:
-
-```text
-I need to create a polished tutorial for X, WeChat, and community forums.
-```
-
-The hub scores local metadata such as extension names, descriptions, categories, and prompts, then suggests relevant Plugins or Skills.
-
-Current boundary: this is a local metadata scorer, not an external LLM. Your task text is not uploaded.
+This is useful before sharing a local tool with other people.
 
 ## Third-Party Plugin Updates
 
-Check updates manually:
+The hub can record third-party marketplace plugin update checks.
 
-```bash
-npm run update:third-party
-```
+The policy is conservative: eligible third-party marketplace plugins can be checked, while self-built local plugins, `local-plugins`, and managed runtime bundles are skipped.
 
-Dry-run the policy:
+If you want automation, ask your local agent to follow the README and schedule the update check for 3:00 AM every Sunday. The UI will show the latest update result and per-extension records.
 
-```bash
-npm run update:third-party -- --dry-run
-```
+## Who It Helps
 
-The update command skips self-built/local plugins and managed runtime bundles.
+Codex Extension Hub is useful if:
 
-Weekly cron example:
+- you have many Codex plugins or skills and want to know what is installed;
+- your team maintains shared skills and needs a visible local catalog;
+- you often work on tutorials, proposals, decks, audits, or code tasks and want to pick the right extension faster.
 
-```cron
-0 3 * * 0 cd "$HOME/codex-extension-hub" && npm run update:third-party >> "$HOME/codex-extension-hub/update.log" 2>&1
-```
+If you only use one or two extensions, you may not need it yet. Once the list grows, a local dashboard saves a lot of context switching.
 
-## Safety Boundaries
+## Short Version for Sharing
 
-Codex Extension Hub is intentionally conservative:
+I built a local dashboard for Codex extensions.
 
-- It does not execute Plugin, Skill, Hook, or MCP scripts.
-- It does not start MCP servers.
-- It does not upload local extension data.
-- `data/*.json` is ignored by git because it may contain local paths and extension names.
-- Sensitive fields such as token, secret, password, api_key, authorization, cookie, headers, and env are redacted.
+It reads metadata from your installed Plugins, Skills, MCP servers, Apps, and Hooks, then shows what is installed, how to invoke it, where it came from, which items have duplicate or incomplete metadata, and which extension may fit a task.
 
-## Suggested Workflow
-
-1. Ask your local agent to install and verify the hub.
-2. Use the metric cards to understand your local extension structure.
-3. Search for common tasks and copy invocation names.
-4. Filter abnormal items and clean up duplicate installs.
-5. Check third-party plugin updates weekly.
-6. Standardize team extension names and metadata.
-
-Project:
+It runs locally, does not execute extension scripts, and does not upload data. Instead of pasting a remote installer, give the GitHub URL and safety requirements to your local agent, then let the agent read, install, start, and verify it.
 
 ```text
 https://github.com/Daviddwt/codex-extension-hub
